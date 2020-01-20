@@ -5,8 +5,10 @@ import {MainLayout} from '../../common/components';
 import {selectCities} from '../../core/store/selectors';
 class HomeScreen extends Component {
     render() {
+        console.log('homescreen props', this.props);
+        const {citites} = this.props.citites.entities || [];
         return (
-            <MainLayout>
+            <MainLayout styles={{layoutStyle}}>
                 <Text>Test text in layout</Text>
             </MainLayout>
         );
@@ -16,3 +18,7 @@ HomeScreen = connect(state => ({
     citites: selectCities(state),
 }))(HomeScreen);
 export {HomeScreen};
+
+const layoutStyle = {
+    justifyContent: 'space-between',
+};

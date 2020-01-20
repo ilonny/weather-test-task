@@ -8,4 +8,9 @@ export const commonStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.mainBg,
     },
+    emptyCitiesTitle: {
+        color: colors.mainText,
+        fontSize: 20,
+        fontWeight: '300',
+    },
 });
