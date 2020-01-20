@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {Text} from 'react-native';
+import {connect} from 'react-redux';
 import {MainLayout} from '../../common/components';
+import {selectCities} from '../../core/store/selectors';
 class HomeScreen extends Component {
     render() {
         return (
@@ -10,5 +12,7 @@ class HomeScreen extends Component {
         );
     }
 }
-
+HomeScreen = connect(state => ({
+    citites: selectCities(state),
+}))(HomeScreen);
 export {HomeScreen};

@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {Text} from 'react-native';
 import {NavigationConfig} from './navigation/config';
+import store from './core/store';
+import {Provider} from 'react-redux';
 class App extends PureComponent {
     state = {
         isError: false,
@@ -13,7 +15,11 @@ class App extends PureComponent {
         if (this.state.isError) {
             return <Text>Critical Error Stub.</Text>;
         } else {
-            return <NavigationConfig />;
+            return (
+                <Provider store={store}>
+                    <NavigationConfig />
+                </Provider>
+            );
         }
     }
 }
