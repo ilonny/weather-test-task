@@ -1,9 +1,16 @@
-import {LOAD_CITIES, ADD_CITY, SET_CHOSEN_CITY} from './constants';
+import {
+    LOAD_CITIES,
+    ADD_CITY,
+    SET_CHOSEN_CITY,
+    LOAD_FORECAST,
+} from './constants';
 export const loadCities = () => {
     return {
         type: LOAD_CITIES,
-        callAPI:
-            'https://mk-s3-test-bucket.s3.eu-central-1.amazonaws.com/cities.json',
+        callAPI: {
+            url:
+                'https://mk-s3-test-bucket.s3.eu-central-1.amazonaws.com/cities.json',
+        },
     };
 };
 
@@ -18,5 +25,17 @@ export const addCity = city => {
     return {
         type: ADD_CITY,
         city,
+    };
+};
+
+export const loadForecast = (lat, lot) => {
+    return {
+        type: LOAD_FORECAST,
+        callAPI: {
+            url: `https://api.weather.yandex.ru/v1/forecast?lat=${lat}&lot=${lot}`,
+            headers: new Headers({
+                'X-Yandex-API-Key': '198c21cd-59c1-4702-9193-4de89c0cc5d5',
+            }),
+        },
     };
 };

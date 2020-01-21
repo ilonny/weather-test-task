@@ -1,4 +1,5 @@
 import {START, SUCCESS} from '../constants';
+import {call} from 'react-native-reanimated';
 export default store => next => action => {
     const {callAPI, ...rest} = action;
     if (!callAPI) {
@@ -8,7 +9,7 @@ export default store => next => action => {
             ...rest,
             type: action.type + START,
         });
-        fetch(callAPI)
+        fetch(callAPI.url, callAPI.headers && {headers: callAPI.headers})
             .then(res => res.json())
             .then(response => {
                 next({

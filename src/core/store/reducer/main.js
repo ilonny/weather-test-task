@@ -13,6 +13,7 @@ const initialState = {
         entities: [],
     },
     chosenCities: [],
+    forecast: {},
 };
 
 export default (mainState = initialState, action) => {
