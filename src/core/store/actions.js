@@ -34,7 +34,7 @@ export const loadForecast = (lat, lot) => {
         callAPI: {
             url: `https://api.weather.yandex.ru/v1/forecast?lat=${lat}&lot=${lot}`,
             headers: new Headers({
-                'X-Yandex-API-Key': '198c21cd-59c1-4702-9193-4de89c0cc5d5',
+                'X-Yandex-API-Key': '198c21cd-59c1-4702-9193-4de89c0cc5d5', //это дело конецчно тожк бы  в конфиг..
             }),
         },
     };
