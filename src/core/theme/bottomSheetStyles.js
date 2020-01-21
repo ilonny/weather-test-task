@@ -44,4 +44,11 @@ export const bottomSheetStyles = StyleSheet.create({
         color: '#fff',
         paddingLeft: 10,
     },
+    listItemContainer: {
+        padding: 10,
+        marginBottom: 5,
+    },
+    listItemContainerText: {
+        color: '#fff',
+    },
 });

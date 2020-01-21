@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text} from 'react-native';
+import {Text, AsyncStorage} from 'react-native';
 import {connect} from 'react-redux';
 import {
     MainLayout,
@@ -8,13 +8,23 @@ import {
     CitiesSearch,
 } from '../../common/components';
 import {selectCities, selectChosenCities} from '../../core/store/selectors';
-import {loadCities} from '../../core/store/actions';
+import {loadCities, setChosenCity} from '../../core/store/actions';
 class HomeScreen extends Component {
     state = {
         bottomSheetOpened: false,
     };
     componentDidMount() {
         //загружаем список городов с сервера, тут по хорошему нужен прелоадер и обработка ошибки загрузки, но времени в обрез.
+        AsyncStorage.getItem('chosen_cities', (err, val) => {
+            console.log('async storage', val);
+            if (val) {
+                try {
+                    this.props.setChosenCity(JSON.parse(val));
+                } catch (e) {
+                    console.log('crash)', e);
+                }
+            }
+        });
         this.props.loadCities();
     }
     OpenBottomSheet = () => {
@@ -24,7 +34,7 @@ class HomeScreen extends Component {
         this.setState({bottomSheetOpened: false});
     };
     render() {
-        // console.log('homescreen props', this.props);
+        console.log('homescreen props', this.props);
         // console.log('cities', chosenCities);
         const {chosenCities} = this.props || [];
         const cities = this.props.cities.entities || [];
@@ -54,6 +64,7 @@ HomeScreen = connect(
     }),
     dispatch => ({
         loadCities: () => dispatch(loadCities()),
+        setChosenCity: cities => dispatch(setChosenCity(cities)),
     }),
 )(HomeScreen);
 export {HomeScreen};
