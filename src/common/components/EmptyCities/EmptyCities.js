@@ -6,7 +6,7 @@ class EmptyCities extends Component {
         return (
             <View style={emptyCitiesStyles.container}>
                 <Text style={emptyCitiesStyles.title}>
-                    Вы еще не добавили ни одного города
+                    Вы еще не добавили{'\n'}ни одного города
                 </Text>
                 <Image
                     source={require('../../../../resources/images/cloud.png')}

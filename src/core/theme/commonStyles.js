@@ -13,4 +13,16 @@ export const commonStyles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '300',
     },
+    bottomButtonContainer: {
+        marginBottom: 20,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    bottomButtonIcon: {
+        marginRight: 10,
+    },
+    bottomButtonText: {
+        color: '#fff',
+    },
 });

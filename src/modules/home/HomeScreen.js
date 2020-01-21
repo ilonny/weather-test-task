@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text} from 'react-native';
 import {connect} from 'react-redux';
-import {MainLayout, EmptyCities} from '../../common/components';
+import {MainLayout, EmptyCities, AddCityButton} from '../../common/components';
 import {selectCities} from '../../core/store/selectors';
 class HomeScreen extends Component {
     render() {
@@ -11,6 +11,7 @@ class HomeScreen extends Component {
         return (
             <MainLayout styles={{layoutStyle}}>
                 {cities.length ? <Text>City list</Text> : <EmptyCities />}
+                <AddCityButton />
             </MainLayout>
         );
     }
