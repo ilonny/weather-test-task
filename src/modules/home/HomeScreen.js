@@ -8,10 +8,14 @@ import {
     CitiesSearch,
 } from '../../common/components';
 import {selectCities, selectChosenCities} from '../../core/store/selectors';
+import {loadCities} from '../../core/store/actions';
 class HomeScreen extends Component {
     state = {
         bottomSheetOpened: false,
     };
+    componentDidMount() {
+        this.props.loadCities();
+    }
     OpenBottomSheet = () => {
         this.setState({bottomSheetOpened: true});
     };
@@ -19,7 +23,7 @@ class HomeScreen extends Component {
         this.setState({bottomSheetOpened: false});
     };
     render() {
-        // console.log('homescreen props', this.props);
+        console.log('homescreen props', this.props);
         // console.log('cities', chosenCities);
         const {chosenCities} = this.props || [];
         const {bottomSheetOpened} = this.state;
@@ -38,10 +42,15 @@ class HomeScreen extends Component {
         );
     }
 }
-HomeScreen = connect(state => ({
-    cities: selectCities(state),
-    chosenCities: selectChosenCities(state),
-}))(HomeScreen);
+HomeScreen = connect(
+    state => ({
+        cities: selectCities(state),
+        chosenCities: selectChosenCities(state),
+    }),
+    dispatch => ({
+        loadCities: () => dispatch(loadCities()),
+    }),
+)(HomeScreen);
 export {HomeScreen};
 
 const layoutStyle = {

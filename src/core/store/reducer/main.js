@@ -19,9 +19,12 @@ export default (mainState = initialState, action) => {
         case LOAD_CITIES + SUCCESS: {
             return {
                 ...mainState,
-                loading: false,
-                loaded: true,
-                entities: action.response,
+                cities: {
+                    ...mainState.cities,
+                    loading: false,
+                    loaded: true,
+                    entities: action.response,
+                },
             };
         }
         default:
