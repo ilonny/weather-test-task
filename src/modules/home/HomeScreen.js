@@ -1,21 +1,22 @@
 import React, {Component} from 'react';
 import {Text} from 'react-native';
 import {connect} from 'react-redux';
-import {MainLayout} from '../../common/components';
+import {MainLayout, EmptyCities} from '../../common/components';
 import {selectCities} from '../../core/store/selectors';
 class HomeScreen extends Component {
     render() {
         console.log('homescreen props', this.props);
-        const {citites} = this.props.citites.entities || [];
+        const cities = this.props.cities.entities || [];
+        console.log('cities', cities);
         return (
             <MainLayout styles={{layoutStyle}}>
-                <Text>Test text in layout</Text>
+                {cities.length ? <Text>City list</Text> : <EmptyCities />}
             </MainLayout>
         );
     }
 }
 HomeScreen = connect(state => ({
-    citites: selectCities(state),
+    cities: selectCities(state),
 }))(HomeScreen);
 export {HomeScreen};
 
