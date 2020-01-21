@@ -5,6 +5,7 @@ import {
     LOAD_CITIES,
     ADD_CITY,
     SET_CHOSEN_CITY,
+    LOAD_FORECAST,
 } from '../constants';
 const initialState = {
     cities: {
@@ -47,6 +48,12 @@ export default (mainState = initialState, action) => {
             return {
                 ...mainState,
                 chosenCities: action.chosenCities,
+            };
+        }
+        case LOAD_FORECAST + SUCCESS: {
+            return {
+                ...mainState,
+                forecast: action.response,
             };
         }
         default:

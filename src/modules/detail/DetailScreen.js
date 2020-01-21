@@ -2,18 +2,24 @@ import React, {Component} from 'react';
 import {SafeAreaView, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {loadForecast} from '../../core/store/actions';
-import {MainLayout, ScreenBottomButton} from '../../common/components';
+import {
+    MainLayout,
+    ScreenBottomButton,
+    DetailForecast,
+} from '../../common/components';
 class DetailScreen extends Component {
+    city = this.props.navigation.getParam('city');
     componentDidMount() {
-        const city = this.props.navigation.getParam('city');
+        const city = this.city;
         this.props.loadForecast(city.latitude, city.longitude);
     }
     render() {
         console.log('detail state', this.state);
         console.log('detail props', this.props);
+        const {forecast} = this.props;
         return (
             <MainLayout styles={{layoutStyle}}>
-                <Text style={{flex: 1}}>Detail screen</Text>
+                <DetailForecast forecast={forecast} city={this.city} />
                 <ScreenBottomButton
                     text="Список городов"
                     action={() => this.props.navigation.navigate('home')}

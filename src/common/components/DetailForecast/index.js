@@ -1,0 +1,1 @@
+export {DetailForecast} from './DetailForecast';
