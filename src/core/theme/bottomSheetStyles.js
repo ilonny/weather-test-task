@@ -28,4 +28,20 @@ export const bottomSheetStyles = StyleSheet.create({
         padding: 20,
         height: '100%',
     },
+    searchBarLabel: {
+        fontSize: 12,
+        color: '#fff',
+        marginBottom: 10,
+    },
+    searchBarInput: {
+        width: '100%',
+        height: 44,
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        borderTopLeftRadius: 8,
+        borderTopRightRadius: 8,
+        borderBottomRightRadius: 8,
+        borderBottomLeftRadius: 8,
+        color: '#fff',
+        paddingLeft: 10,
+    },
 });

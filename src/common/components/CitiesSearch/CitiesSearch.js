@@ -7,10 +7,10 @@ class CitiesSearch extends Component {
     componentDidMount() {
         this.bottomSheetRef.current.snapTo(1);
     }
-    renderContent = () => <SearchBar />;
+    renderContent = () => <SearchBar cities={this.props.cities} />;
     renderHeader = <Header />;
     render() {
-        const {CloseBottomSheet} = this.props;
+        const {CloseBottomSheet, cities} = this.props;
         return (
             <BottomSheet
                 ref={this.bottomSheetRef}

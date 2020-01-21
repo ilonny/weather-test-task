@@ -14,6 +14,7 @@ class HomeScreen extends Component {
         bottomSheetOpened: false,
     };
     componentDidMount() {
+        //загружаем список городов с сервера, тут по хорошему нужен прелоадер и обработка ошибки загрузки, но времени в обрез.
         this.props.loadCities();
     }
     OpenBottomSheet = () => {
@@ -23,9 +24,10 @@ class HomeScreen extends Component {
         this.setState({bottomSheetOpened: false});
     };
     render() {
-        console.log('homescreen props', this.props);
+        // console.log('homescreen props', this.props);
         // console.log('cities', chosenCities);
         const {chosenCities} = this.props || [];
+        const cities = this.props.cities.entities || [];
         const {bottomSheetOpened} = this.state;
         return (
             <MainLayout styles={{layoutStyle}}>
@@ -36,7 +38,10 @@ class HomeScreen extends Component {
                     action={this.OpenBottomSheet}
                 />
                 {bottomSheetOpened && (
-                    <CitiesSearch CloseBottomSheet={this.CloseBottomSheet} />
+                    <CitiesSearch
+                        CloseBottomSheet={this.CloseBottomSheet}
+                        cities={cities}
+                    />
                 )}
             </MainLayout>
         );

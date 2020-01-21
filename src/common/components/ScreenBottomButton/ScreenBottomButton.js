@@ -4,7 +4,6 @@ import {commonStyles} from '../../../core/theme';
 const PlusIcon = require('../../../../resources/images/plus.png');
 class ScreenBottomButton extends Component {
     render() {
-        console.log('button props', this.props);
         const {icon, text, action} = this.props;
         let compIcon;
         switch (icon) {
