@@ -5,6 +5,7 @@ const initialState = {
         loading: false,
         entities: [],
     },
+    chosenCities: [],
 };
 
 export default (mainState = initialState, action) => {

@@ -2,15 +2,18 @@ import React, {Component} from 'react';
 import {Text} from 'react-native';
 import {connect} from 'react-redux';
 import {MainLayout, EmptyCities, AddCityButton} from '../../common/components';
-import {selectCities} from '../../core/store/selectors';
+import {selectCities, selectChosenCities} from '../../core/store/selectors';
 class HomeScreen extends Component {
+    state = {
+        bottomSheetOpen: false,
+    };
     render() {
         console.log('homescreen props', this.props);
-        const cities = this.props.cities.entities || [];
-        console.log('cities', cities);
+        const {chosenCities} = this.props || [];
+        console.log('cities', chosenCities);
         return (
             <MainLayout styles={{layoutStyle}}>
-                {cities.length ? <Text>City list</Text> : <EmptyCities />}
+                {chosenCities.length ? <Text>City list</Text> : <EmptyCities />}
                 <AddCityButton />
             </MainLayout>
         );
@@ -18,6 +21,7 @@ class HomeScreen extends Component {
 }
 HomeScreen = connect(state => ({
     cities: selectCities(state),
+    chosenCities: selectChosenCities(state),
 }))(HomeScreen);
 export {HomeScreen};
 
