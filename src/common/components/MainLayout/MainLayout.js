@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {SafeAreaView} from 'react-native';
-import {commonStyles} from '../../core/theme';
+import {commonStyles} from '../../../core/theme';
 class MainLayout extends Component {
     render() {
         return (
