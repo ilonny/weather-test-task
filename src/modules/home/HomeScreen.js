@@ -6,6 +6,7 @@ import {
     EmptyCities,
     ScreenBottomButton,
     CitiesSearch,
+    CityList,
 } from '../../common/components';
 import {selectCities, selectChosenCities} from '../../core/store/selectors';
 import {loadCities, setChosenCity} from '../../core/store/actions';
@@ -37,11 +38,16 @@ class HomeScreen extends Component {
         console.log('homescreen props', this.props);
         // console.log('cities', chosenCities);
         const {chosenCities} = this.props || [];
+        const {navigation} = this.props;
         const cities = this.props.cities.entities || [];
         const {bottomSheetOpened} = this.state;
         return (
             <MainLayout styles={{layoutStyle}}>
-                {chosenCities.length ? <Text>City list</Text> : <EmptyCities />}
+                {chosenCities.length ? (
+                    <CityList cities={chosenCities} navigation={navigation} />
+                ) : (
+                    <EmptyCities />
+                )}
                 <ScreenBottomButton
                     icon="plus"
                     text="Добавить город"
