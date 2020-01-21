@@ -1,3 +1,4 @@
 export {MainLayout} from './MainLayout';
 export {EmptyCities} from './EmptyCities';
-export {AddCityButton} from './AddCityButton';
+export {ScreenBottomButton} from './ScreenBottomButton';
+export {CitiesSearch} from './CitiesSearch';
